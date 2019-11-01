@@ -15,9 +15,10 @@ before_install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
 
+
 install:
   - docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
-  - echo $DOCKER_PASSWORD | docker login --username jsleung1 --password-stdin
+  - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
   - docker push jsleung1/udacity-frontend
 
 
