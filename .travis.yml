@@ -19,6 +19,9 @@ before_install:
 install:
   - docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
+  - docker push jsleung1/reverseproxy
+  - docker push jsleung1/udacity-restapi-user
+  - docker push jsleung1/udacity-restapi-feed
   - docker push jsleung1/udacity-frontend
 
 
