@@ -5,6 +5,7 @@ metadata:
     service: backend-feed
   name: backend-feed
 spec:
+  minReadySeconds: 300
   replicas: 3
   template:
     metadata:
