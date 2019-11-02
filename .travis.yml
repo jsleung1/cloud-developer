@@ -34,7 +34,7 @@ install:
   - sed -i -e 's|KUBE_CA_CERT|'"${KUBE_CA_CERT}"'|g' kubeconfigTemplate
   - sed -i -e 's|KUBE_ENDPOINT|'"${KUBE_ENDPOINT}"'|g' kubeconfigTemplate
   - sed -i -e 's|KUBE_ADMIN_CERT|'"${KUBE_ADMIN_CERT}"'|g' kubeconfigTemplate
-   - sed -i -e 's|KUBE_ADMIN_KEY|'"${KUBE_ADMIN_KEY}"'|g' kubeconfigTemplate
+  - sed -i -e 's|KUBE_ADMIN_KEY|'"${KUBE_ADMIN_KEY}"'|g' kubeconfigTemplate
   - kubectl --kubeconfig kubeconfigTemplate set image deployment/backend-feed backend-feed=jsleung1/udacity-restapi-feed:$TRAVIS_BUILD_ID
   #- kubectl rollout status deployment//backend-feed
   #- kubectl --kubeconfig kubeconfigTemplate rolling-update deployment/backend-feed --image=jsleung1/udacity-restapi-feed:$TRAVIS_BUILD_ID
