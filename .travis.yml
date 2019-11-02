@@ -14,18 +14,22 @@ before_install:
   - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
+  - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
 
 install:
   - docker-compose -f course-03/exercises/udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel 
+  - docker push jsleung1/reverseproxy:${TRAVIS_BUILD_ID}
+  - docker push jsleung1/udacity-restapi-user:${TRAVIS_BUILD_ID}
+  - docker push jsleung1/udacity-restapi-feed:${TRAVIS_BUILD_ID}
+  - docker push jsleung1/udacity-frontend:${TRAVIS_BUILD_ID}
   - docker tag jsleung1/reverseproxy:${TRAVIS_BUILD_ID} jsleung1/reverseproxy:latest #tag the local travis build id into the jsleung1 repository as version "latest"
   - docker tag jsleung1/udacity-restapi-user:${TRAVIS_BUILD_ID} jsleung1/udacity-restapi-user:latest
   - docker tag jsleung1/udacity-restapi-feed:${TRAVIS_BUILD_ID} jsleung1/udacity-restapi-feed:latest
   - docker tag jsleung1/udacity-frontend:${TRAVIS_BUILD_ID} jsleung1/udacity-frontend:latest
-  - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
-  - docker push jsleung1/reverseproxy
-  - docker push jsleung1/udacity-restapi-user
-  - docker push jsleung1/udacity-restapi-feed
-  - docker push jsleung1/udacity-frontend
+  - docker push jsleung1/reverseproxy:latest
+  - docker push jsleung1/udacity-restapi-user:latest
+  - docker push jsleung1/udacity-restapi-feed:latest
+  - docker push jsleung1/udacity-frontend:latest
 
 

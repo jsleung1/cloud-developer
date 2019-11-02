@@ -1,7 +1,7 @@
 version: "3"
 services:
   reverseproxy:
-      image: jsleung1/reverseproxy
+      image: jsleung1/reverseproxy:${TRAVIS_BUILD_ID}
       ports:
           - 8080:8080
       restart: always
@@ -9,7 +9,7 @@ services:
         - backend-user
         - backend-feed     
   backend-user:
-    image: jsleung1/udacity-restapi-user
+    image: jsleung1/udacity-restapi-user:${TRAVIS_BUILD_ID}
     environment:
       POSTGRESS_USERNAME: $POSTGRESS_USERNAME
       POSTGRESS_PASSWORD: $POSTGRESS_PASSWORD 
@@ -21,7 +21,7 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
-    image: jsleung1/udacity-restapi-feed
+    image: jsleung1/udacity-restapi-feed:${TRAVIS_BUILD_ID}
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
@@ -36,6 +36,6 @@ services:
       URL: "http://localhost:8100"
   frontend:
     #image: jsleung1/udacity-frontend:local
-    image: jsleung1/udacity-frontend
+    image: jsleung1/udacity-frontend:${TRAVIS_BUILD_ID}
     ports:
       - "8100:80"
