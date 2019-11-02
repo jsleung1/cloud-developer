@@ -16,7 +16,7 @@ const c = config.dev;
   const app = express();
   const port = process.env.PORT || 8080; // default port to listen
   
-  console.log( 'Development Branch 123456789 feed: Server listening on Port: ' + port);
+  console.log( 'Development Branch 1234567891234 feed: Server listening on Port: ' + port);
 
   app.use(bodyParser.json());
 
