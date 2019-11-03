@@ -21,7 +21,7 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
-    image: jsleung1/udacity-restapi-feed:${TRAVIS_BUILD_ID}
+    image: jsleung1/udacity-restapi-feeddummy:${TRAVIS_BUILD_ID}
     volumes:
       - $HOME/.aws:/root/.aws
     environment:
