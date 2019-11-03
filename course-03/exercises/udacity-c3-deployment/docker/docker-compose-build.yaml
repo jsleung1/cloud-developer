@@ -16,8 +16,8 @@ services:
       driver: "awslogs"
       options:
         awslogs-region: "us-east-1"
-          awslogs-group: "udacity-kubernetes"
-          awslogs-stream: "backend-feed-logs"
+        awslogs-group: "udacity-kubernetes"
+        awslogs-stream: "backend-feed-logs"
   #frontend:
   #  build:
   #    context: ../../udacity-c3-frontend  
