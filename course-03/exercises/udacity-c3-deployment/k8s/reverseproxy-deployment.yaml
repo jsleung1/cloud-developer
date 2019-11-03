@@ -5,6 +5,7 @@ metadata:
     service: reverseproxy
   name: reverseproxy
 spec:
+  minReadySeconds: 60
   replicas: 2
   template:
     metadata:

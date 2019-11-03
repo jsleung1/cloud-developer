@@ -34,6 +34,12 @@ services:
       AWS_BUCKET: $AWS_BUCKET
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
+    logging:
+      driver: "awslogs"
+      options:
+        awslogs-region: "us-east-1"
+          awslogs-group: "udacity-kubernetes"
+          awslogs-stream: "backend-feed-logs"
   frontend:
     #image: jsleung1/udacity-frontend:local
     image: jsleung1/udacity-frontend:${TRAVIS_BUILD_ID}
